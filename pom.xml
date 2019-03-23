@@ -10,6 +10,8 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>singleton</module>
+        <module>reorder</module>
+        <module>jdk8</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -32,5 +34,9 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
 </project>
