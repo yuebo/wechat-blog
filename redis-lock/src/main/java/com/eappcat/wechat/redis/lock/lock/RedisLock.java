@@ -1,4 +1,4 @@
-package com.eappcat.wechat.redis.lock;
+package com.eappcat.wechat.redis.lock.lock;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

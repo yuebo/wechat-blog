@@ -1,4 +1,4 @@
-package com.eappcat.wechat.redis.lock;
+package com.eappcat.wechat.redis.lock.lock;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -6,7 +6,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -28,7 +27,7 @@ public class RedisLockAspect {
     /**
      * 切点，待遇哦RedisLock的注解方法
      */
-    @Pointcut("@annotation(com.eappcat.wechat.redis.lock.RedisLock)")
+    @Pointcut("@annotation(com.eappcat.wechat.redis.lock.lock.RedisLock)")
     void cutPoint(){};
 
     @Around("cutPoint()")

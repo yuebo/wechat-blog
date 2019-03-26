@@ -1,6 +1,6 @@
 package com.eappcat.wechat.redis.lock;
 
-import org.springframework.context.annotation.Bean;
+import com.eappcat.wechat.redis.lock.lock.RedisLockCallback;
 import org.springframework.stereotype.Component;
 
 @Component

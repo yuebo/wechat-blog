@@ -1,4 +1,4 @@
-package com.eappcat.wechat.redis.lock;
+package com.eappcat.wechat.redis.lock.lock;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.eappcat.wechat.redis.lock;
+package com.eappcat.wechat.redis.lock.lock;
 
 public interface RedisLockCallback {
     default Object failback(Object ... args){
