@@ -1,5 +1,6 @@
-package com.eappcat.wechat.redis.lock.lock;
+package com.eappcat.wechat.redis.lock;
 
+import com.eappcat.wechat.redis.lock.lock.RedisLockCallback;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -13,7 +14,8 @@ public class RedisLockApplication {
 	}
 
 	@Bean
-	@ConditionalOnMissingBean RedisLockCallback redisLockCallback(){
+	@ConditionalOnMissingBean
+	RedisLockCallback redisLockCallback(){
 		return new RedisLockCallback(){};
 	}
 }
