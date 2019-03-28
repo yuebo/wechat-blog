@@ -15,6 +15,9 @@ import org.springframework.util.StringUtils;
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Redis Lock的AOP实现类
+ */
 @Aspect
 @Component
 public class RedisLockAspect {
@@ -25,7 +28,7 @@ public class RedisLockAspect {
     private ApplicationContext applicationContext;
 
     /**
-     * 切点，待遇哦RedisLock的注解方法
+     * 切点，拦截带有@RedisLock的注解方法
      */
     @Pointcut("@annotation(com.eappcat.wechat.redis.lock.lock.RedisLock)")
     void cutPoint(){};
@@ -48,11 +51,11 @@ public class RedisLockAspect {
                 Object result = point.proceed();
                 return result;
             }finally {
+                //如果设置删除操作完成后删除token,则删除key释放锁
                 if (redisLock.releaseOnSuccess()){
                     redisTemplate.delete(key);
                 }
             }
-
         }else {
             //查找错误处理器
             RedisLockCallback redisLockCallback=(RedisLockCallback)applicationContext.getBean(redisLock.callback());

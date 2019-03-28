@@ -1,4 +1,4 @@
-package com.eappcat.wechat.redis.lock;
+package com.eappcat.wechat.redis.lock.lock;
 
 import com.eappcat.wechat.redis.lock.lock.RedisLockCallback;
 import org.springframework.stereotype.Component;
