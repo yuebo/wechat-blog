@@ -60,6 +60,12 @@
             <artifactId>reflections</artifactId>
             <version>0.9.11</version>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.9.12</version>
+        </dependency>
+
     </dependencies>
 
     <build>

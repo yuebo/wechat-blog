@@ -31,4 +31,15 @@ public class SignApplicationTests {
         signed.setName("bbb");
     }
 
+    @Test(expected = SignatureException.class)
+    public void buddy(){
+        User user=new User();
+        user.setAge(1);
+        user.setName("xyb");
+        user.setGender(Gender.Male);
+        User signed=ByteBuddyUtils.signObject(user);
+        log.info("{}", JSONObject.toJSONString(signed));
+        signed.setName("bbb");
+
+    }
 }
