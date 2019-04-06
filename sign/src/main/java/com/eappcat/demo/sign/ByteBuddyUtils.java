@@ -22,23 +22,13 @@ public class ByteBuddyUtils {
                 .implement(SignatureAware.class)
                 .method(not(isDeclaredBy(Object.class))).intercept(MethodDelegation.to(SignatureInterceptor.class))
                 .make().load(clazzSignature.getClassLoader()).getLoaded();
+        //签名对象
         String signature=SignatureUtils.signObject(o);
         SignatureAware buddy=(SignatureAware)BeanUtils.instantiateClass(clazz);
+        //复制属性
         BeanUtils.copyProperties(o,buddy,"signature");
+        //设置签名
         buddy.setSignature(signature);
         return (T)buddy;
-
     }
-//    public static <T> T signObject2(T o){
-//        Class<?> clazz=new ByteBuddy().subclass(o.getClass()).defineField("signature",String.class, Visibility.PRIVATE)
-//                .implement(SignatureAware.class)
-//                .intercept(FieldAccessor.ofBeanProperty())
-//                .make().load(ByteBuddyUtils.class.getClassLoader()).getLoaded();
-//        String signature=SignatureUtils.signObject(o);
-//        SignatureAware cglib=(SignatureAware)Enhancer.create(clazz, new SignatureProxyHandler());
-//        BeanUtils.copyProperties(o,cglib,"signature");
-//        cglib.setSignature(signature);
-//        return (T)cglib;
-//
-//    }
 }

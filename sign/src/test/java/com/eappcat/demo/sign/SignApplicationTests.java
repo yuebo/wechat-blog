@@ -28,6 +28,7 @@ public class SignApplicationTests {
         user.setGender(Gender.Male);
         User signed=CglibUtils.signObject(user);
         log.info("{}", ((SignatureAware)signed).getSignature());
+        log.info("{}", JSONObject.toJSONString(signed));
         signed.setName("bbb");
     }
 
@@ -40,6 +41,5 @@ public class SignApplicationTests {
         User signed=ByteBuddyUtils.signObject(user);
         log.info("{}", JSONObject.toJSONString(signed));
         signed.setName("bbb");
-
     }
 }
