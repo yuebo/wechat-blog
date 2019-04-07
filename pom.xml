@@ -12,6 +12,7 @@
         <module>singleton</module>
         <module>reorder</module>
         <module>jdk8</module>
+        <module>jxbrowser</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
