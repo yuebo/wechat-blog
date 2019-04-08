@@ -19,21 +19,18 @@ public class MyPrintJobListener implements PrintJobListener {
     }
     @Override
     public void onPrintingDone(PrintJobEvent printJobEvent) {
-        try {
-            JSONObject jsonObject=new JSONObject();
-            if (!deferredResult.isSetOrExpired()){
-                if(printJobEvent.isSuccess()){
-                    jsonObject.put("status",200);
-                    jsonObject.put("output",tempFile.getName());
-                    deferredResult.setResult(jsonObject);
-                }else {
-                    jsonObject.put("status",500);
-                    jsonObject.put("message","打印失败");
-                    deferredResult.setResult(jsonObject);
-                }
+        JSONObject jsonObject=new JSONObject();
+        if (!deferredResult.isSetOrExpired()){
+            if(printJobEvent.isSuccess()){
+                jsonObject.put("status",200);
+                jsonObject.put("output",tempFile.getName());
+                deferredResult.setResult(jsonObject);
+            }else {
+                jsonObject.put("status",500);
+                jsonObject.put("message","打印失败");
+                deferredResult.setResult(jsonObject);
             }
-        }catch (Exception e){
-            log.error("error to download file: {}",e);
         }
+        log.info("print end: {}",printJobEvent.isSuccess());
     }
 }

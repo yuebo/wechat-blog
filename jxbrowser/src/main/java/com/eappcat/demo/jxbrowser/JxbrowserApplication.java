@@ -4,6 +4,7 @@ import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.BrowserType;
 import com.teamdev.jxbrowser.chromium.events.FinishLoadingEvent;
 import com.teamdev.jxbrowser.chromium.events.LoadAdapter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @SpringBootApplication
+@Slf4j
 public class JxbrowserApplication {
 
     public static void main(String[] args) {
@@ -29,7 +31,7 @@ public class JxbrowserApplication {
             @Override
             public void onFinishLoadingFrame(FinishLoadingEvent event) {
                 int size=atomicInteger.getAndIncrement();
-                if(size==event.getBrowser().getFramesIds().size()){
+                if(size>=event.getBrowser().getFramesIds().size()){
                     atomicInteger.set(0);
                     browser.executeJavaScript("setTimeout(new function(){window.print()},1000)");
                 }
