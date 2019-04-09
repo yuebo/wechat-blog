@@ -13,6 +13,8 @@ import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBo
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -20,27 +22,28 @@ import java.util.concurrent.Executors;
 @RestController
 public class AsyncController {
 
-    @Autowired
-    ExecutorService executorService;
+    ExecutorService executorService=Executors.newSingleThreadExecutor();
 
     @GetMapping("/callable")
     public Callable<HttpEntity<String>> callable(){
-        return new Callable<HttpEntity<String>>() {
-            @Override
-            public HttpEntity<String> call() throws Exception {
-                Thread.sleep(5000);
-                return new HttpEntity<String>("test");
-            }
+        return () -> {
+            Thread.sleep(5000);
+            return new HttpEntity<String>("test");
         };
     }
+
     @GetMapping("/callable2")
     public Callable<String> callable2(){
-        return new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                Thread.sleep(5000);
-                return "test2";
-            }
+        return () -> {
+            Thread.sleep(5000);
+            return "test2";
+        };
+    }
+    @GetMapping("/callable3")
+    public Callable<Map> callable3(){
+        return () -> {
+            Thread.sleep(5000);
+            return new HashMap();
         };
     }
     @GetMapping("/deferredResult")
