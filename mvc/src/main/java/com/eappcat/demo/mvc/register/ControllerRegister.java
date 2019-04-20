@@ -1,4 +1,4 @@
-package com.eappcat.demo.spring.mvc;
+package com.eappcat.demo.mvc.register;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
