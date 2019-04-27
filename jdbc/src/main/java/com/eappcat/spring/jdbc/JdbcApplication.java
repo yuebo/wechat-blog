@@ -1,17 +1,16 @@
-package com.eappcat.demo.spring;
+package com.eappcat.spring.jdbc;
 
+import com.eappcat.spring.jdbc.bean.SecondaryDatasourceProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
 
 @SpringBootApplication
-@EnableSpringConfigured
-public class Application {
+@EnableConfigurationProperties(SecondaryDatasourceProperties.class)
+public class JdbcApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(JdbcApplication.class, args);
     }
-
 
 }

@@ -72,6 +72,11 @@
             <artifactId>javax.inject</artifactId>
             <version>1</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+            <version>1.5.19.RELEASE</version>
+        </dependency>
 
         <!-- aspects 编译需要的依赖 end-->
     </dependencies>
