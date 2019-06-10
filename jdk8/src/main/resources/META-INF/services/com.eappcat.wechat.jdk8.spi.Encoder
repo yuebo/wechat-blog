@@ -1,0 +1,3 @@
+com.eappcat.wechat.jdk8.spi.impl.Base64Encoder
+com.eappcat.wechat.jdk8.spi.impl.Md5Encoder
+com.eappcat.wechat.jdk8.spi.impl.ShaEncoder

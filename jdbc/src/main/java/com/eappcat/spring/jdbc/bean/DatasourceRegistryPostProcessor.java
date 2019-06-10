@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.BindException;
 
 @Component
-public class DatasourceRegistryPostProcessor implements BeanDefinitionRegistryPostProcessor, EnvironmentAware {
+    public class DatasourceRegistryPostProcessor implements BeanDefinitionRegistryPostProcessor, EnvironmentAware {
     private ConfigurableEnvironment environment;
     @Override
     public void setEnvironment(Environment environment) {
